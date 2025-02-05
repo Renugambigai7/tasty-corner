@@ -1,4 +1,4 @@
-import final_bill  # Import the final_bill.py module
+import final_bill 
 
 def display_menu(menu_choice):
     if menu_choice == "veg":
@@ -24,7 +24,7 @@ def place_order(menu):
                     if plates <= 0:
                         print("Please enter a valid number of plates.")
                         continue
-                    break  # Valid input, exit loop
+                    break  
                 except ValueError:
                     print("Invalid input! Please enter a number.")
             
@@ -59,15 +59,12 @@ def main():
     if menu:
         order_details, total_price = place_order(menu)
         total_price = apply_delivery_charge(total_price)  
-
-        # Save order details and total price in a file
+    
         with open("bill_data.txt", "w") as f:
             for item, plates, price in order_details:
-                f.write(f"{item},{plates},{price}\n")  # Write each order item to the file
-            f.write(str(total_price) + "\n")  # Write total price at the end
-
-        # Call function from final_bill.py to display the bill
-        final_bill.display_final_bill()  # This will read from 'bill_data.txt' and display the bill
-
+                f.write(f"{item},{plates},{price}\n")  
+            f.write(str(total_price) + "\n")  
+       
+        final_bill.display_final_bill()  
 if __name__ == "__main__":
     main()
